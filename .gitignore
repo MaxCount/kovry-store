@@ -1,0 +1,23 @@
+# dependencies & build
+node_modules/
+.next/
+out/
+build/
+
+# env & secrets
+.env
+.env*.local
+.vercel
+
+# os / misc
+.DS_Store
+*.pem
+npm-debug.log*
+
+# local agent tooling (not part of the app)
+.kilo/
+.agents/
+.claude/
+.mcp.json
+skills-lock.json
+screenshots/
