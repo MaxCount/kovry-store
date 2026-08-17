@@ -8,7 +8,7 @@ export default function ProductCard({ p }) {
       className="group flex flex-col rounded-xl border border-brand-200 bg-white p-3 transition hover:shadow-lg"
     >
       <div className="relative">
-        <CarpetThumb colors={p.colors} form={p.form} className="aspect-[4/3] w-full" />
+        <CarpetThumb image={p.image} colors={p.colors} form={p.form} className="aspect-[4/3] w-full" />
         <div className="absolute left-2 top-2 flex gap-1">
           {p.isNew && <span className="rounded bg-emerald-600 px-2 py-0.5 text-[11px] font-semibold text-white">Новинка</span>}
           {p.hit && <span className="rounded bg-brand-600 px-2 py-0.5 text-[11px] font-semibold text-white">Хит</span>}

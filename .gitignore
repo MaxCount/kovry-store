@@ -1,23 +1,12 @@
-# dependencies & build
-node_modules/
-.next/
-out/
-build/
-
-# env & secrets
-.env
-.env*.local
-.vercel
-
-# os / misc
+/node_modules
+/.next
+/out
+/build
 .DS_Store
+desktop.ini
+Thumbs.db
 *.pem
 npm-debug.log*
-
-# local agent tooling (not part of the app)
-.kilo/
-.agents/
+.env*.local
+.vercel
 .claude/
-.mcp.json
-skills-lock.json
-screenshots/

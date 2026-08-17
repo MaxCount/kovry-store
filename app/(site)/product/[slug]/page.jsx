@@ -30,7 +30,7 @@ export default async function ProductPage({ params }) {
       </nav>
 
       <div className="mt-5 grid gap-8 md:grid-cols-2">
-        <CarpetThumb colors={p.colors} form={p.form} className="aspect-[4/3] w-full" />
+        <CarpetThumb image={p.image} colors={p.colors} form={p.form} className="aspect-[4/3] w-full" />
         <div>
           <div className="flex gap-2">
             {p.isNew && <span className="rounded bg-emerald-600 px-2 py-0.5 text-xs font-semibold text-white">Новинка</span>}

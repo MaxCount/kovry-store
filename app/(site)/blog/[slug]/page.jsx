@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPosts, getPost } from "@/data/source";
 import PortableBody from "@/components/PortableBody";
+import { urlFor } from "@/sanity/lib/image";
 
 export async function generateStaticParams() {
   const posts = await getPosts();
@@ -21,6 +22,7 @@ export default async function PostPage({ params }) {
   const other = all.filter((p) => p.slug !== post.slug).slice(0, 2);
   const c0 = (post.cover && post.cover[0]) || "#e4cfb4";
   const c1 = (post.cover && post.cover[1]) || "#a9743f";
+  const coverSrc = urlFor(post.coverImage)?.width(1200).height(600).fit("crop").url();
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-8">
@@ -30,7 +32,12 @@ export default async function PostPage({ params }) {
       </nav>
       <p className="mt-4 text-xs font-medium text-brand-500">{post.category}{post.readingTime ? ` · ${post.readingTime} мин чтения` : ""}</p>
       <h1 className="mt-1 text-3xl font-bold text-brand-900">{post.title}</h1>
-      <div className="mt-5 h-52 w-full rounded-xl" style={{ background: `linear-gradient(135deg, ${c0}, ${c1})` }} />
+      {coverSrc ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={coverSrc} alt="" className="mt-5 h-52 w-full rounded-xl object-cover" />
+      ) : (
+        <div className="mt-5 h-52 w-full rounded-xl" style={{ background: `linear-gradient(135deg, ${c0}, ${c1})` }} />
+      )}
       <div className="mt-6">
         <PortableBody value={post.body} />
       </div>

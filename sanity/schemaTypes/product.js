@@ -13,6 +13,10 @@ export const product = defineType({
       options: { source: "name", maxLength: 96 },
       validation: (r) => r.required(),
     }),
+    defineField({
+      name: "image", title: "Фото товара", type: "image",
+      options: { hotspot: true },
+    }),
     defineField({ name: "price", title: "Цена, р.", type: "number", validation: (r) => r.required().positive() }),
     defineField({ name: "oldPrice", title: "Старая цена, р.", type: "number" }),
     defineField({
@@ -52,7 +56,7 @@ export const product = defineType({
     defineField({ name: "desc", title: "Описание", type: "text", rows: 4 }),
   ],
   preview: {
-    select: { title: "name", subtitle: "material", price: "price" },
-    prepare: ({ title, subtitle, price }) => ({ title, subtitle: `${subtitle} · ${price} р.` }),
+    select: { title: "name", subtitle: "material", price: "price", media: "image" },
+    prepare: ({ title, subtitle, price, media }) => ({ title, subtitle: `${subtitle} · ${price} р.`, media }),
   },
 });

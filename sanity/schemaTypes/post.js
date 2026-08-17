@@ -21,7 +21,12 @@ export const post = defineType({
     }),
     defineField({ name: "readingTime", title: "Время чтения, мин", type: "number", initialValue: 4 }),
     defineField({
-      name: "cover", title: "Цвета обложки (2 hex)", type: "array",
+      name: "coverImage", title: "Обложка статьи", type: "image",
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: "cover", title: "Цвета обложки (2 hex, запасной вариант)", type: "array",
+      description: "Используется как градиент-заглушка, если обложка не загружена",
       of: [defineArrayMember({ type: "string" })], validation: (r) => r.max(2),
     }),
     defineField({
@@ -29,5 +34,5 @@ export const post = defineType({
       of: [defineArrayMember({ type: "block" })],
     }),
   ],
-  preview: { select: { title: "title", subtitle: "category" } },
+  preview: { select: { title: "title", subtitle: "category", media: "coverImage" } },
 });
